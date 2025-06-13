@@ -3,9 +3,9 @@ import ecommerceIcon from "../assets/icons/shopping.png";
 import foodTruckIcon from "../assets/icons/food-truck.png";
 
 const iconMap = {
-  "temperature-icon.svg": temperatureIcon,
-  "ecommerce-icon.svg": ecommerceIcon,
-  "food-truck-icon.svg": foodTruckIcon,
+  "smart-temperature.png": temperatureIcon,
+  "shopping.png": ecommerceIcon,
+  "food-truck.png": foodTruckIcon,
 };
 
 export default function ProjectCard({
@@ -16,7 +16,8 @@ export default function ProjectCard({
   link,
   screenshot,
 }) {
-  const iconSrc = iconMap[screenshot.split("/").pop()] || null;
+  const filename = screenshot.split("/").pop();
+  const iconSrc = iconMap[filename] || null;
 
   return (
     <div
