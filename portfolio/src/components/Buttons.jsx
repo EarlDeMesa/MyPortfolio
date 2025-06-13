@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Button({
   children,
   onClick,
@@ -19,11 +21,23 @@ export default function Button({
       "py-3 px-6 bg-accentTerracotta text-white font-semibold rounded-md shadow-md transition-transform duration-300 hover:bg-teal hover:shadow-lg",
   };
 
-  return href ? (
-    <a href={href} className={`${baseStyles} ${variants[type]}`}>
-      {children}
-    </a>
-  ) : (
+  if (href && href.startsWith("/")) {
+    return (
+      <Link to={href} className={`${baseStyles} ${variants[type]}`}>
+        {children}
+      </Link>
+    );
+  }
+
+  if (href) {
+    return (
+      <a href={href} className={`${baseStyles} ${variants[type]}`}>
+        {children}
+      </a>
+    );
+  }
+
+  return (
     <button
       onClick={onClick}
       disabled={disabled}
